@@ -1,0 +1,7 @@
+*.aux
+*.dvi
+*.log
+*.out
+*.synctex.gz
+*.tex.backup
+*.toc
