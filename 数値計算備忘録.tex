@@ -1,9 +1,28 @@
 \RequirePackage{plautopatch}
 \RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass{ltjsarticle}
+\documentclass{ltjsreport}
 
+% ----- packages -----
+%% filesystem
 \usepackage{currfile}
+
+%% structure
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{xurl}
+
+%% decoration
+\usepackage{ascmac}
+
+%% color
+\usepackage[usenames]{color}
+
+%% link
+\usepackage[unicode,bookmarksopenlevel=4,bookmarksnumbered=true,colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+% --------------------
+
+\theoremstyle{definition}
+\newtheorem*{derivation*}{導出}
 
 % document version number
 \def\docVerMajor{0}
@@ -12,15 +31,15 @@
 \def\docVerWip{-wip} % \def\docVerWip{-wip}
 \def\docVer{\docVerMajor.\docVerMinor.\docVerPatch\docVerWip}
 
+\input{macros/LaTeX-motchyMacros/motchyMacros.tex}
+
 \begin{document}
     \title{数値計算備忘録}
     \author{motchy}
     \date{\西暦 2022年8月23日 $\sim$ \today \\ver \docVer}
 	\maketitle
 
-    \newpage
     \tableofcontents
 
-    \newpage
     \input{parts/LinearAlgebra/LinearAlgebra.tex}
 \end{document}
