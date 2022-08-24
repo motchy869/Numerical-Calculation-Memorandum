@@ -7,17 +7,18 @@
             $\bm{x}\bm{x}^*$の階数が1以下である(特に0となるのは$\bm{x}=\bm{0}$の時かつその時に限る)ことから、この方法は ``rank-one update'' と呼ばれている。
         \end{itembox}
         \begin{derivation*}
-            方針としては、$n\times n$行列の rank-one update を$(n-1)\times(n-1)$行列の問題に帰着させ、再帰的に解を構築する。
+            方針としては、$n\times n$行列の rank-one update を$(n-1)\times(n-1)$行列の問題に帰着させ、以降同様に逐次的に行列の次数を縮小しながら解を構築する。
+            このアルゴリズムの総計算量が$O(n^2)$となるのは明らかであろう。
             \par
             $A+\bm{x}\bm{x}^*$のCholesky分解を$FF^*$とする。
             $L$の第$i$列ベクトルを$\bm{l}_i = [l_{1,1},l_{2,1},\dots,l_{n,1}]^\top$とし、同様に$F$の第$i$列ベクトルを$\bm{f}_i = [f_{1,1},f_{2,1},\dots,f_{n,1}]^\top$とすると次式が成り立つ。
             \begin{align*}
                 \sum_{i=1}^n \bm{f}_i\bm{f}_i^* &= \bm{x}\bm{x}^* + \sum_{i=1}^n \bm{l}_i\bm{l}_i^* \\
-                \bm{f}_1\bm{f}_1^* + \sum_{i=2}^n \bm{f}_i\bm{f}_i^* &= \bm{x}\bm{x}^* + \bm{l}_1\bm{l}_1^* + \sum_{i=2}^n \bm{l}_i\bm{l}_i^*
+                \bm{f}_1\bm{f}_1^* + \sum_{i=2}^n \bm{f}_i\bm{f}_i^* &= \bm{x}\bm{x}^* + \bm{l}_1\bm{l}_1^* + \sum_{i=2}^n \bm{l}_i\bm{l}_i^* \tag{1}
             \end{align*}
             $\bm{f}_i\bm{f}_i^*,\;\bm{l}_i\bm{l}_i^*\;(i=2,3,\dots,n)$の第1行および第1列は0であるから、$\bm{f}_1\bm{f}_1^*$と$\bm{x}\bm{x}^* + \bm{l}_1\bm{l}_1^*$の第1行および第1列が一致する。
             これより次式が成り立つ。
-            \[ f_{1,1} = \sqrt{l_{1,1}^2 + |x_1|^2} \eqqcolon r,\; f_{k,1} = \frac{1}{r}\left(l_{k,1}l_{1,1} + x_k\overline{x_1}\right)\]
+            \[ f_{1,1} = \sqrt{l_{1,1}^2 + |x_1|^2} \eqqcolon r,\; f_{k,1} = \frac{1}{r}\left(l_{k,1}l_{1,1} + x_k\overline{x_1}\right) \tag{2} \]
             ただし$L$の対角成分が非負の実数であることを前提としている。
             以上より、$\tilde{\bm{l}_1} \coloneqq [0,l_{2,1},l_{3,1},\dots,l_{n,1}]^\top,\;\tilde{\bm{x}} \coloneqq [0,x_2,x_3,\dots,x_n]^\top$とすると次式が成り立つ。
             \[ \bm{f}_1 = r\bm{e}_1 + \frac{l_{1,1}}{r}\tilde{\bm{l}_1} + \frac{\conj{x_1}}{r}\tilde{\bm{x}} \]
@@ -29,5 +30,13 @@
                 &= \tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^* - \frac{1}{r^2}\left(\abs{x_1}^2\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + l_{1,1}^2\tilde{\bm{x}}\tilde{\bm{x}}^* - x_1l_{1,1}\tilde{\bm{l}_1}\tilde{\bm{x}}^* - \overline{x_1}l_{1,1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right) \\
                 &= \tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^* - \bm{y}\bm{y}^* \quad \text{where} \quad \bm{y} = \frac{1}{r}\left(l_{1,1}\tilde{\bm{x}} - x_1\tilde{\bm{l}_1}\right)
             \end{align*}
+            上式の$\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^*$は$\bm{x}\bm{x}^* + \bm{l}_1\bm{l}_1^*$の右下$(n-1)\times(n-1)$行列である。
+            以上より次式が成り立つ。
+            \[ \bm{f}_1\bm{f}_1^* = \bm{x}\bm{x}^* + \bm{l}_1\bm{l}_1^* - \bm{y}\bm{y}^* \]
+            これを式(1)に適用して次式を得る。
+            \[ \sum_{i=2}^n \bm{f}_i\bm{f}_i^* = \bm{y}\bm{y}^* + \sum_{i=2}^n \bm{l}_i\bm{l}_i^* \]
+            これは$(n-1)\times(n-1)$行列の rank-one update である。
+            このようにして行列の次数を逐次的に縮小し、最後はスカラーの計算に帰着する。
+            次数$k$の問題に対し式(2)の計算量は$O(k)$であるから、このアルゴリズムの総計算量は$n(n+1)/2$に比例する。
             \qed
         \end{derivation*}
