@@ -17,6 +17,16 @@
             \end{align*}
             $\bm{f}_i\bm{f}_i^*,\;\bm{l}_i\bm{l}_i^*\;(i=2,3,\dots,n)$の第1行および第1列は0であるから、$\bm{f}_1\bm{f}_1^*$と$\bm{x}\bm{x}^* + \bm{l}_1\bm{l}_1^*$の第1行および第1列が一致する。
             これより次式が成り立つ。
-            \[ f_{1,1} = \sqrt{l_{1,1}^2 + |x_1|^2} \]
+            \[ f_{1,1} = \sqrt{l_{1,1}^2 + |x_1|^2} \eqqcolon r,\; f_{k,1} = \frac{1}{r}\left(l_{k,1}l_{1,1} + x_k\overline{x_1}\right)\]
+            ただし$L$の対角成分が非負の実数であることを前提としている。
+            以上より、$\tilde{\bm{l}_1} \coloneqq [0,l_{2,1},l_{3,1},\dots,l_{n,1}]^\top,\;\tilde{\bm{x}} \coloneqq [0,x_2,x_3,\dots,x_n]^\top$とすると次式が成り立つ。
+            \[ \bm{f}_1 = r\bm{e}_1 + \frac{l_{1,1}}{r}\tilde{\bm{l}_1} + \frac{\conj{x_1}}{r}\tilde{\bm{x}} \]
+            ここに$\bm{e}_1$は第1要素が1で他は0であるベクトルである。
+            既に述べた通り$\bm{f}_1\bm{f}_1^*$の右下$(n-1)\times(n-1)$行列を評価すると次式を得る。
+            \begin{align*}
+                &\phantom{=} \frac{1}{r^2} \left(l_{1,1}^2\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + l_{1,1}x_1\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \abs{x_1}^2\tilde{\bm{x}}\tilde{\bm{x}}^* + l_{1,1}\overline{x_1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right) \\
+                &= \left(1 - \frac{\abs{x_1}^2}{r^2}\right)\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \frac{l_{1,1}x_1}{r^2}\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \left(1 - \frac{l_{1,1}^2}{r^2}\right)\tilde{\bm{x}}\tilde{\bm{x}}^* + \frac{\overline{x_1}l_{1,1}}{r^2}\tilde{\bm{x}}\tilde{\bm{l}_1}^* \\
+                &= \tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{xl}}^* - \frac{1}{r^2}\left(\abs{x_1}^2\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + l_{1,1}^2\tilde{\bm{x}}\tilde{\bm{xl}}^* - l_{1,1}x_1\tilde{\bm{l}_1}\tilde{\bm{x}}^*\right)
+            \end{align*}
             \qed
         \end{derivation*}
