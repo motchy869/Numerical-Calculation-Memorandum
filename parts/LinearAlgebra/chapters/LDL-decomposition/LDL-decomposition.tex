@@ -9,7 +9,8 @@
         \begin{derivation*}
             方針はCholesky分解の rank-one update と同様である。
             $A+\bm{x}\bm{x}^*$のLDL分解を$FGF^*$とする。
-            $G$の第$i$対角成分を$g_i$とする。
+            $D,G$の第$i$対角成分をそれぞれ$d_i,g_i$とする。
+            但し$d_i\geq 0$を前提とする。
             $L$の第$i$列ベクトルを$\bm{l}_i = [0,\dots,0,1,l_{i+1,i},\dots,l_{n,i}]^\top\in\complexNumbers^{n\times n}$とし、同様に$F$の第$i$列ベクトルを$\bm{f}_i = [0,\dots,0,1,f_{i+1,i},\dots,f_{n,i}]^\top\in\complexNumbers^{n\times n}$とすると次式が成り立つ。
             \begin{align*}
                 \sum_{i=1}^n \bm{f}_i g_i\bm{f}_i^* &= \bm{x}\bm{x}^* + \sum_{i=1}^n \bm{l}_i d_i\bm{l}_i^* \\
@@ -22,4 +23,19 @@
             \[ \bm{f}_1 = \bm{e}_1 + \frac{d_1}{g}\tilde{\bm{l}_1} + \frac{\conj{x_1}}{g}\tilde{\bm{x}} \]
             ここに$\bm{e}_1$は第1要素が1で他は0であるベクトルである。
             $\bm{f}_1 g_1\bm{f}_1^*$の右下$(n-1)\times(n-1)$行列を評価すると次式を得る。
+            \begin{align*}
+                &\phantom{=} \frac{1}{g}\left(d_1\tilde{\bm{l}_1} + \tilde{\bm{x}}\tilde{\bm{x}}^*\right)\left(d_1\tilde{\bm{l}_1} + \tilde{\bm{x}}\tilde{\bm{x}}^*\right)^* = \frac{d_1}{g}\tilde{\bm{l}_1}d_1\tilde{\bm{l}_1}^* + \frac{\abs{x_1}^2}{g}\tilde{\bm{x}}\tilde{\bm{x}}^* + \frac{d_1}{g}\left(x_1\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \conj{x_1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right) \\
+                &= \frac{g - \abs{x_1}^2}{g}\tilde{\bm{l}_1}d_1\tilde{\bm{l}_1}^* + \frac{g-d_1}{g}\tilde{\bm{x}}\tilde{\bm{x}}^* + \frac{d_1}{g}\left(x_1\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \conj{x_1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right) \\
+                &= \tilde{\bm{l}_1}d_1\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^* - \frac{d_1}{g}\left[\abs{x_1}^2\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{l}_1}^* + x_1\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \conj{x_1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right] \\
+                &= \tilde{\bm{l}_1}d_1\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^* - \bm{y}\frac{d_1}{g}\bm{y}^* \quad \text{where} \quad \bm{y} = x_1\tilde{\bm{l}_1} + \tilde{\bm{x}}
+            \end{align*}
+            上式の$\tilde{\bm{l}_1}d_1\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^*$は$\bm{x}\bm{x}^* + \bm{l}_1 d_1\bm{l}_1^*$の右下$(n-1)\times(n-1)$行列である。
+            以上より次式が成り立つ。
+            \[ \bm{f}_1 g_1\bm{f}_1^* = \bm{x}\bm{x}^* + \bm{l}_1 d_1\bm{l}_1^* - \bm{y}\frac{d_1}{g}\bm{y}^* \]
+            これを式(1)に適用して次式を得る。
+            \[ \sum_{i=2}^n \bm{f}_i g_i\bm{f}_i^* = \bm{y}\frac{d_1}{g}\bm{y}^* + \sum_{i=2}^n \bm{l}_i d_i\bm{l}_i^* \]
+            これは$(n-1)\times(n-1)$行列の rank-one update である。
+            このようにして行列の次数を逐次的に縮小し、最後はスカラーの計算に帰着する。
+            次数$k$の問題に対し式(2)の計算量は$O(k)$であるから、このアルゴリズムの総計算量は$n(n+1)/2$に比例する。
+            \qed
         \end{derivation*}
