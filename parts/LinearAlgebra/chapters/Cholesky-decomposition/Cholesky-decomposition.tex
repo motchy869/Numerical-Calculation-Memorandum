@@ -25,7 +25,7 @@
             ここに$\bm{e}_1$は第1要素が1で他は0であるベクトルである。
             $\bm{f}_1\bm{f}_1^*$の右下$(n-1)\times(n-1)$行列を評価すると次式を得る。
             \begin{align*}
-                &\phantom{=} \frac{1}{r^2} \left(l_{1,1}^2\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + l_{1,1}x_1\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \abs{x_1}^2\tilde{\bm{x}}\tilde{\bm{x}}^* + l_{1,1}\overline{x_1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right) \\
+                &\phantom{=} \frac{1}{r^2}\left(l_{1,1}\tilde{\bm{l}_1} + \conj{x_1}\tilde{\bm{x}}\right) = \frac{1}{r^2} \left(l_{1,1}^2\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + l_{1,1}x_1\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \abs{x_1}^2\tilde{\bm{x}}\tilde{\bm{x}}^* + l_{1,1}\overline{x_1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right) \\
                 &= \left(1 - \frac{\abs{x_1}^2}{r^2}\right)\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \frac{l_{1,1}x_1}{r^2}\tilde{\bm{l}_1}\tilde{\bm{x}}^* + \left(1 - \frac{l_{1,1}^2}{r^2}\right)\tilde{\bm{x}}\tilde{\bm{x}}^* + \frac{\overline{x_1}l_{1,1}}{r^2}\tilde{\bm{x}}\tilde{\bm{l}_1}^* \\
                 &= \tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^* - \frac{1}{r^2}\left(\abs{x_1}^2\tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + l_{1,1}^2\tilde{\bm{x}}\tilde{\bm{x}}^* - x_1l_{1,1}\tilde{\bm{l}_1}\tilde{\bm{x}}^* - \overline{x_1}l_{1,1}\tilde{\bm{x}}\tilde{\bm{l}_1}^*\right) \\
                 &= \tilde{\bm{l}_1}\tilde{\bm{l}_1}^* + \tilde{\bm{x}}\tilde{\bm{x}}^* - \bm{y}\bm{y}^* \quad \text{where} \quad \bm{y} = \frac{1}{r}\left(l_{1,1}\tilde{\bm{x}} - x_1\tilde{\bm{l}_1}\right)
