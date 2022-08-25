@@ -11,7 +11,7 @@
             このアルゴリズムの総計算量が$O(n^2)$となるのは明らかであろう。
             \par
             $A+\bm{x}\bm{x}^*$のCholesky分解を$FF^*$とする。
-            $L$の第$i$列ベクトルを$\bm{l}_i = [l_{1,1},l_{2,1},\dots,l_{n,1}]^\top$とし、同様に$F$の第$i$列ベクトルを$\bm{f}_i = [f_{1,1},f_{2,1},\dots,f_{n,1}]^\top$とすると次式が成り立つ。
+            $L$の第$i$列ベクトルを$\bm{l}_i = [l_{1,i},l_{2,i},\dots,l_{n,i}]^\top$とし、同様に$F$の第$i$列ベクトルを$\bm{f}_i = [f_{1,i},f_{2,i},\dots,f_{n,i}]^\top$とすると次式が成り立つ。
             \begin{align*}
                 \sum_{i=1}^n \bm{f}_i\bm{f}_i^* &= \bm{x}\bm{x}^* + \sum_{i=1}^n \bm{l}_i\bm{l}_i^* \\
                 \bm{f}_1\bm{f}_1^* + \sum_{i=2}^n \bm{f}_i\bm{f}_i^* &= \bm{x}\bm{x}^* + \bm{l}_1\bm{l}_1^* + \sum_{i=2}^n \bm{l}_i\bm{l}_i^* \tag{1}
