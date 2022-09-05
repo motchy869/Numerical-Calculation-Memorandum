@@ -1,0 +1,43 @@
+\chapter{Gauss-Seidel法}
+    \section{定義}
+        以下に述べる定義はWikipediaの英語記事\href{https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method}{Gauss Seidel method}からの引用である。
+        \par
+        $n\in\naturalNumbers,\;A\in\complexNumbers^{n\times n},\;\bm{b}\in\complexNumbers^n$ とする。$A$ は正定値対称、または狭義優対角であるとする。Gauss-Seidel法とは、線型方程式 $A\bm{x}=\bm{b}$ の解を求める反復法である。$\bm{x}_1\in\complexNumbers^n$ を任意の初期解とし、次の漸化式で解候補を更新してゆく。
+        \[ L_* \bm{x}_{k+1} = -U\bm{x}_k \quad (k=1,2,\dots)\]
+        ここに $L_*$ は $A$ の対角成分およびその下側の要素からなる下三角行列であり、 $U$ は $A$ の対角成分の上側の要素からなる上三角行列である。
+    \section{係数行列が狭義優対角ならば厳密解に収束すること}
+        \begin{proof}
+            $A$ の次数を $n$ とする。$\mathring{\bm{x}}$ を厳密解とすると $L_* \mathring{\bm{x}} = \bm{b} - U\mathring{\bm{x}}$ である。
+            これを解の更新式から減じると次式を得る。
+            \[ L_* (\bm{x}_{k+1} - \mathring{\bm{x}}) = -U(\bm{x}_k - \mathring{\bm{x}}) \tag{1} \]
+            $\bm{v}_k \coloneqq \bm{x}_k - \mathring{\bm{x}}$ とおくと、式 (1) より次式が成り立つ。
+            \[ L_* \bm{v}_{k+1} = -U\bm{v}_k \tag{2} \]
+            $M_k \coloneqq \max_{i=1,\dots,n} |v_{k,i}|\;(v_{k,i}$ は $\bm{v}_k$ の第 $i$ 要素)とする。
+            次の2つが同時に成り立つことが、$\bm{v}_k$ が $\bm{0}_n$ に収束するための十分条件である。
+            \begin{enumerate}
+                \item ある $k \in \mathbb{N}$ に対して $M_k = 0$ ならば $M_l = 0\;(l=k+1,k+2,\dots)$
+                \item 適当な $0 < \alpha < 1$ が存在して $M_k > 0 \Rightarrow M_{k+1} < \alpha M_k$
+            \end{enumerate}
+            $L_*$ が正則であることと式 (2) より直ちに 1. が成り立つ。
+            次に 2. を数学的帰納法で示す。
+            $\tilde{\alpha}$ を次式で定義する。
+            \[ \tilde{\alpha} \coloneqq \min_{i=1,2,\dots,n} \frac{1}{|a_{i,i}|} \sum_{j=1,\dots,n \wedge j\neq i} |a_{i,j}| \]
+            $A$ は優対角だから $0 < \tilde{\alpha} < 1$ である。
+            \begin{align*}
+                a_{1,1} v_{k+1, 1} &= -\sum_{j=2}^n a_{1,j}v_{k,j} \\
+                |a_{1,1}| |v_{k+1, 1}| &= \left|\sum_{j=2}^n a_{1,j}v_{k,j}\right| \leq \sum_{j=2}^n |a_{1,j}||v_{k,j}| \leq M_k \sum_{j=2}^n |a_{1,j}| \\
+                |v_{k+1, 1}| &\leq \frac{M_k}{|a_{1,1}|} \sum_{j=2}^n |a_{1,j}| \leq \tilde{\alpha}M_k
+            \end{align*}
+            $|v_{k+1, j}| \leq \tilde{\alpha} M_k\;(j=1,2,\dots,l)\;(l\in\{1,2,\dots,n-1\})$ ならば $|v_{k+1, l+1}| \leq \tilde{\alpha} M_k$ であることを示す。
+            式 (2) の $l+1$ 行目を展開すると次式を得る。
+            \begin{align*}
+                \sum_{j=1}^{l+1} a_{l+1,j} v_{k+1, j} &= -\sum_{j=l+2}^n a_{l+1,j}v_{k,j} \\
+                a_{l+1,l+1} v_{k+1, l+1} &= -\sum_{j=1}^l a_{l+1,j} v_{k+1, j} - \sum_{j=l+2}^n a_{l+1,j}v_{k,j} \\
+                |a_{l+1,l+1}| |v_{k+1, l+1}| &= \left|-\sum_{j=1}^l a_{l+1,j} v_{k+1, j} - \sum_{j=l+2}^n a_{l+1,j}v_{k,j}\right| \leq \sum_{j=1}^l |a_{l+1,j}||v_{k+1, j}| + \sum_{j=l+2}^n |a_{l+1,j}||v_{k,j}| \\
+                &\leq M_k \sum_{j=1,\dots,n \wedge j\neq l+1} |a_{l+1,j}| \\
+                |v_{k+1, l+1}| &\leq \frac{M_k}{|a_{l+1,l+1}|} \sum_{j=1,\dots,n \wedge j\neq l+1} |a_{l+1,j}| \leq \tilde{\alpha} M_k
+            \end{align*}
+            以上より帰納的に $|v_{k+1,j}| \leq \tilde{\alpha} M_k\;(j=1,2,\dots,n)$ が成り立つ。
+            すなわち $M_{k+1} \leq \tilde{\alpha} M_k$ が成り立つ。
+            $\tilde{\alpha} < \alpha < 1$ となるように $\alpha $ を定めることで 2. が示される。
+        \end{proof}
