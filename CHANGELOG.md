@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Added:
+  - fixed-point number
   - rank-one update for Cholesky decomposition
   - rank-one update for LDL decomposition
   - Gauss Seidel method converges for strictly diagonally dominant matrices
