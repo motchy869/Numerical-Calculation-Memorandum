@@ -8,6 +8,7 @@
         "longtable",
         "pdfauthor",
         "stepnumber",
-        "texname"
+        "texname",
+        "underbracket"
     ]
 }
