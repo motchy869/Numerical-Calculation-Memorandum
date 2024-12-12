@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Fixed:
+  - equation error in the definition of a rational number corresponding to a fixed-point number
 - Changed:
   - Renamed the top-level file to 'probability_memorandum.tex'.
 

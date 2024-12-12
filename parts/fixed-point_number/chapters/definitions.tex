@@ -24,9 +24,9 @@
     \section{対応する有理数}
         $a$ を固定小数点数とする。
         符号ビットが 0 であるとき、「 $a$ に対応する有理数 (a rational number corresponding to $a$)」は次式で定義される。
-        \[ \sum_{k=-\Nd}^{\Ni-1} a[k]2^{k-\Nd} = \parens*{\sum_{k=-\Nd}^{\Ni-1} a[k]2^k}/2^\Nd \]
+        \[ \sum_{k=-\Nd}^{\Ni-1} a[k]2^k = \parens*{\sum_{k=0}^{\Ni+\Nd-1} a[k]2^k}/2^\Nd \]
         符号ビットが 1 であるとき、「 $a$ に対応する有理数」は次式で定義される。
-        \[ -\parens*{2^\Ni - \sum_{k=-\Nd}^{\Ni-1} a[k]2^{k-\Nd}} = -\parens*{2^{\Ni+\Nd} - \sum_{k=-\Nd}^{\Ni-1} a[k]2^k}/2^\Nd \]
+        \[ -\parens*{2^\Ni - \sum_{k=-\Nd}^{\Ni-1} a[k]2^k} = -\parens*{2^{\Ni+\Nd} - \sum_{k=0}^{\Ni+\Nd-1} a[k]2^k}/2^\Nd \]
         \par
         以上の変換規則は、$a$ の整数部と小数部を連結して 2 の補数表現の符号付き整数と見做したものに対応する整数を $2^\Nd$ で割ったものと等しい。
     \section{特性に関する写像}
