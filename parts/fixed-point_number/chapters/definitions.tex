@@ -33,10 +33,10 @@
         固定小数点数 $a$ の整数部と小数部のビット数がそれぞれ $\Ni, \Nd$ であるとする。
         次の写像を定義する。
         \begin{enumerate}
-            \item 整数部のビット幅：$\IntPartBW{a} \coloneqq \Ni$
-            \item 小数部のビット幅：$\DecPartBW{a} \coloneqq \Nd$
-            \item 全体のビット幅：$\TotalBW{a} \coloneqq \Ni + \Nd$
-            \item 対応する有理数：$\Rat{a} \coloneqq \text{a rational number corresponding to }a$
+            \item 整数部のビット幅：$\IntPartBW{a} \coloneq \Ni$
+            \item 小数部のビット幅：$\DecPartBW{a} \coloneq \Nd$
+            \item 全体のビット幅：$\TotalBW{a} \coloneq \Ni + \Nd$
+            \item 対応する有理数：$\Rat{a} \coloneq \text{a rational number corresponding to }a$
         \end{enumerate}
         次に、有理数 $r$ から固定小数点数への写像に関わるいくつかの写像を定義する。
         尚、有理数から固定小数点数への写像の手続きは \ref{fxd-pt_num::def::prem} で述べたように既知であるとして説明を割愛する。
@@ -67,7 +67,7 @@
                 $a\times b$ の整数部のビット数 $\Nia+\Nib$ が $\Rat{a}\Rat{b}$ の整数部の必要ビット数以上であり、かつ $a\times b$ の小数部のビット数 $\Nda+\Ndb$ が $\Rat{a}\Rat{b}$ の小数部の必要ビット数以上であることを示せばよい。
                 まず次式が成り立つ。
                 \[ \Rat{a}\Rat{b} = \underbrace{2^\Nda\Rat{a}}_{\eqqcolon\alpha}\underbrace{2^\Ndb\Rat{b}}_{\eqqcolon\beta}/2^{\Nda+\Ndb} \]
-                $\Na \coloneqq \Nia + \Nda,\; \Nb \coloneqq \Nib + \Ndb$ とすると次式が成り立つ。
+                $\Na \coloneq \Nia + \Nda,\; \Nb \coloneq \Nib + \Ndb$ とすると次式が成り立つ。
                 \begin{gather*}
                     -2^{\Na-1} \leq \alpha \leq 2^{\Na-1}-1,\quad -2^{\Nb-1} \leq \beta \leq 2^{\Nb-1}-1 \\
                     \therefore -2^{\Na+\Nb-2} + \min \braces*{2^{\Na-1},\; 2^{\Nb-1}} \leq \alpha\beta \leq 2^{\Na+\Nb-2} \\
