@@ -11,9 +11,9 @@
             $A$ の次数を $n$ とする。$\mathring{\bm{x}}$ を厳密解とすると $L_* \mathring{\bm{x}} = \bm{b} - U\mathring{\bm{x}}$ である。
             これを解の更新式から減じると次式を得る。
             \[ L_* (\bm{x}_{k+1} - \mathring{\bm{x}}) = -U(\bm{x}_k - \mathring{\bm{x}}) \tag{1} \]
-            $\bm{v}_k \coloneqq \bm{x}_k - \mathring{\bm{x}}$ とおくと、式 (1) より次式が成り立つ。
+            $\bm{v}_k \coloneq \bm{x}_k - \mathring{\bm{x}}$ とおくと、式 (1) より次式が成り立つ。
             \[ L_* \bm{v}_{k+1} = -U\bm{v}_k \tag{2} \]
-            $M_k \coloneqq \max_{i=1,\dots,n} |v_{k,i}|\;(v_{k,i}$ は $\bm{v}_k$ の第 $i$ 要素)とする。
+            $M_k \coloneq \max_{i=1,\dots,n} |v_{k,i}|\;(v_{k,i}$ は $\bm{v}_k$ の第 $i$ 要素)とする。
             次の2つが同時に成り立つことが、$\bm{v}_k$ が $\bm{0}_n$ に収束するための十分条件である。
             \begin{enumerate}
                 \item ある $k \in \mathbb{N}$ に対して $M_k = 0$ ならば $M_l = 0\;(l=k+1,k+2,\dots)$
@@ -22,7 +22,7 @@
             $L_*$ が正則であることと式 (2) より直ちに 1. が成り立つ。
             次に 2. を数学的帰納法で示す。
             $\tilde{\alpha}$ を次式で定義する。
-            \[ \tilde{\alpha} \coloneqq \min_{i=1,2,\dots,n} \frac{1}{|a_{i,i}|} \sum_{j=1,\dots,n \wedge j\neq i} |a_{i,j}| \]
+            \[ \tilde{\alpha} \coloneq \min_{i=1,2,\dots,n} \frac{1}{|a_{i,i}|} \sum_{j=1,\dots,n \wedge j\neq i} |a_{i,j}| \]
             $A$ は優対角だから $0 < \tilde{\alpha} < 1$ である。
             \begin{align*}
                 a_{1,1} v_{k+1, 1} &= -\sum_{j=2}^n a_{1,j}v_{k,j} \\

@@ -24,25 +24,24 @@
     \section{対応する有理数}
         $a$ を固定小数点数とする。
         符号ビットが 0 であるとき、「 $a$ に対応する有理数 (a rational number corresponding to $a$)」は次式で定義される。
-        \[ \sum_{k=-\Nd}^{\Ni-1} a[k]2^{k-\Nd} = \parens*{\sum_{k=-\Nd}^{\Ni-1} a[k]2^k}/2^\Nd \]
+        \[ \sum_{k=-\Nd}^{\Ni-1} a[k]2^k = \parens*{\sum_{k=0}^{\Ni+\Nd-1} a[k]2^k}/2^\Nd \]
         符号ビットが 1 であるとき、「 $a$ に対応する有理数」は次式で定義される。
-        \[ -\parens*{2^\Ni - \sum_{k=-\Nd}^{\Ni-1} a[k]2^{k-\Nd}} = -\parens*{2^{\Ni+\Nd} - \sum_{k=-\Nd}^{\Ni-1} a[k]2^k}/2^\Nd \]
+        \[ -\parens*{2^\Ni - \sum_{k=-\Nd}^{\Ni-1} a[k]2^k} = -\parens*{2^{\Ni+\Nd} - \sum_{k=0}^{\Ni+\Nd-1} a[k]2^k}/2^\Nd \]
         \par
         以上の変換規則は、$a$ の整数部と小数部を連結して 2 の補数表現の符号付き整数と見做したものに対応する整数を $2^\Nd$ で割ったものと等しい。
     \section{特性に関する写像}
         固定小数点数 $a$ の整数部と小数部のビット数がそれぞれ $\Ni, \Nd$ であるとする。
         次の写像を定義する。
         \begin{enumerate}
-            \item 整数部のビット幅：$\IntPartBW{a} \coloneqq \Ni$
-            \item 小数部のビット幅：$\DecPartBW{a} \coloneqq \Nd$
-            \item 全体のビット幅：$\TotalBW{a} \coloneqq \Ni + \Nd$
-            \item 対応する有理数：$\Rat{a} \coloneqq \text{a rational number corresponding to }a$
+            \item 整数部のビット幅：$\IntPartBW{a} \coloneq \Ni$
+            \item 小数部のビット幅：$\DecPartBW{a} \coloneq \Nd$
+            \item 全体のビット幅：$\TotalBW{a} \coloneq \Ni + \Nd$
+            \item 対応する有理数：$\Rat{a} \coloneq \text{a rational number corresponding to }a$
         \end{enumerate}
-        次に、有理数から固定小数点数への写像に関わるいくつかの写像を定義する。
+        次に、有理数 $r$ から固定小数点数への写像に関わるいくつかの写像を定義する。
         尚、有理数から固定小数点数への写像の手続きは \ref{fxd-pt_num::def::prem} で述べたように既知であるとして説明を割愛する。
-        有理数 $p$ を固定小数点数に写像する手続きを実行したものとして、整数部のビットを添え字 0 から上に向かって見てゆくとき、ある添え字 $k$ 以上では常に 0 となる。
-        このような最小の $k$ に対して $k+1$ を以て「整数部の必要ビット数」と定義する。
-        +1 は符号ビットを考慮したものである。
+        $r$ を表現するのに必要十分な整数部のビット数は $\ceil{\log_2(\abs{\floor{r}}+1)}+1$ である（最後の +1 は符号ビットのため）\footnote{$r$ が負、例えば $-1.5$ のときは $-2+0.5$ のように「整数 + 非負の小数」に分けると理解し易い。}。
+        これを以て「整数部の必要ビット数」と定義する。
         また、小数部のビットを添え字 -1 から下に向かって見てゆくとき、次の 2 通りがあり得る：
         \begin{enumerate}
             \item ある添え字 $k$ 以下では常にビットが 0 となる。
@@ -57,7 +56,7 @@
         \newcommand{\Ndb}{{N_{\text{dec},b}}}
         \subsection{定義}
             固定小数点数 $a, b$ について $a$ の整数部と小数部のビット数がそれぞれ $\Nia, \Nda$ であり、$b$ の整数部と小数部のビット数がそれぞれ $\Nib, \Ndb$ であるとする。
-            $a$ と $b$ の積 $a\times b$ を「$\Rat{a}\Rat{b}$ を、整数部が $\Nia+\Nib$ ビット、小数部が $\Nda+\Ndb$ ビットの固定小数点数に写像して得られる数」として定義する。
+            $a$ と $b$ の積 $a\times b$ を「$\Rat{a}\Rat{b}$ を、整数部が $\Nia+\Nib$ ビット、小数部が $\Nda+\Ndb$ ビットの固定小数点数に写像して得られる数。写像の際、確保された bit-cell から溢れるビットがもしあれば捨てる」として定義する。
             \par
         \subsection{性質}
             \newcommand{\Na}{{N_\text{a}}}
@@ -68,7 +67,7 @@
                 $a\times b$ の整数部のビット数 $\Nia+\Nib$ が $\Rat{a}\Rat{b}$ の整数部の必要ビット数以上であり、かつ $a\times b$ の小数部のビット数 $\Nda+\Ndb$ が $\Rat{a}\Rat{b}$ の小数部の必要ビット数以上であることを示せばよい。
                 まず次式が成り立つ。
                 \[ \Rat{a}\Rat{b} = \underbrace{2^\Nda\Rat{a}}_{\eqqcolon\alpha}\underbrace{2^\Ndb\Rat{b}}_{\eqqcolon\beta}/2^{\Nda+\Ndb} \]
-                $\Na \coloneqq \Nia + \Nda,\; \Nb \coloneqq \Nib + \Ndb$ とすると次式が成り立つ。
+                $\Na \coloneq \Nia + \Nda,\; \Nb \coloneq \Nib + \Ndb$ とすると次式が成り立つ。
                 \begin{gather*}
                     -2^{\Na-1} \leq \alpha \leq 2^{\Na-1}-1,\quad -2^{\Nb-1} \leq \beta \leq 2^{\Nb-1}-1 \\
                     \therefore -2^{\Na+\Nb-2} + \min \braces*{2^{\Na-1},\; 2^{\Nb-1}} \leq \alpha\beta \leq 2^{\Na+\Nb-2} \\
