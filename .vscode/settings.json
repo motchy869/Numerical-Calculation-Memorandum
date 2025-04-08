@@ -1,9 +1,34 @@
 {
+    "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build-out",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "--cmdx",
+                "-file-line-error",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-halt-on-error",
+                "-output-directory=%OUTDIR%",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "lualatex",
+            "tools": [
+                "lualatex"
+            ]
+        }
+    ],
     "cSpell.words": [
         "bitboxes",
         "bracks",
         "braket",
         "bytefield",
+        "cmdx",
         "counterwithin",
         "datatool",
         "dottedtocline",
