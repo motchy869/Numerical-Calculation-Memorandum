@@ -1,6 +1,6 @@
 \chapter{定義}
-    \newcommand{\Ni}{{N_\text{int}}}
-    \newcommand{\Nd}{{N_\text{dec}}}
+    \newcommand{\Ni}{{N_\mathrm{int}}}
+    \newcommand{\Nd}{{N_\mathrm{dec}}}
     \section{前提}
         \label{fxd-pt_num::def::prem}
         \begin{enumerate}
@@ -50,17 +50,17 @@
         1 の場合、$-k-1$ を以て「小数部の必要ビット数」と定義する。
         2 の場合、「小数部の必要ビット数」は無限大であると定義する。
     \section{積}
-        \newcommand{\Nia}{{N_{\text{int},a}}}
-        \newcommand{\Nda}{{N_{\text{dec},a}}}
-        \newcommand{\Nib}{{N_{\text{int},b}}}
-        \newcommand{\Ndb}{{N_{\text{dec},b}}}
+        \newcommand{\Nia}{{N_{\mathrm{int},a}}}
+        \newcommand{\Nda}{{N_{\mathrm{dec},a}}}
+        \newcommand{\Nib}{{N_{\mathrm{int},b}}}
+        \newcommand{\Ndb}{{N_{\mathrm{dec},b}}}
         \subsection{定義}
             固定小数点数 $a, b$ について $a$ の整数部と小数部のビット数がそれぞれ $\Nia, \Nda$ であり、$b$ の整数部と小数部のビット数がそれぞれ $\Nib, \Ndb$ であるとする。
             $a$ と $b$ の積 $a\times b$ を「$\Rat{a}\Rat{b}$ を、整数部が $\Nia+\Nib$ ビット、小数部が $\Nda+\Ndb$ ビットの固定小数点数に写像して得られる数。写像の際、確保された bit-cell から溢れるビットがもしあれば捨てる」として定義する。
             \par
         \subsection{性質}
-            \newcommand{\Na}{{N_\text{a}}}
-            \newcommand{\Nb}{{N_\text{b}}}
+            \newcommand{\Na}{{N_\mathrm{a}}}
+            \newcommand{\Nb}{{N_\mathrm{b}}}
             前記の定義に従うと、常に $\Rat{a\times b} = \Rat{a}\Rat{b}$ が成り立つ。
             \begin{proof}
                 \quad\par
