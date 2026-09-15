@@ -23,43 +23,42 @@
 \usepackage{ascmac}
 \usepackage{bbm}
 % \usepackage{bytefield} % currently not used
-% \usepackage{bigdelim} % currently not used
-\usepackage{cases}
 \usepackage{chngcntr} % for counterwithin command
 \usepackage[usenames]{color}
-% \usepackage{comment} % currently not used
 \usepackage{currfile}
 % \usepackage{datatool} % currently not used
-% \usepackage{empheq} % currently not used
-% \usepackage{fancybox}  % currently not used
+\usepackage{empheq}
+\usepackage{enumitem}
 \usepackage{fancyhdr}
 \usepackage[T1]{fontenc}
 \usepackage[top=20truemm,bottom=20truemm,left=15truemm,right=15truemm]{geometry}
-% \usepackage{graphicx} % currently not used
 \usepackage{here}
 \usepackage[unicode,bookmarksopenlevel=4,bookmarksnumbered=true,colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
-\usepackage{cleveref} % must be included after hyperref
+\usepackage{cleveref} % must be included AFTER hyperref
 \usepackage{ifthen}
 \usepackage{listingsutf8, jvlisting}
-\usepackage{longtable}
-\usepackage{luacode}
-% \usepackage{mathtools} % currently not used
-% \usepackage{multirow} % currently not used
+% \usepackage{ltablex} % [tabularx 環境と longtable 環境を同時に使いたい](https://mrikc.hatenablog.com/entry/2015/09/04/020128)
+% \keepXColumns % needed to use X column type in ltablex environment
+% \usepackage{luacode} % currently not used
 \usepackage{makecell} % [How to add a forced line break inside a table cell](https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell)
-% \usepackage{nameref} % currently not used
-\usepackage{pdflscape}
+% \usepackage{pdflscape} % currently not used
 \usepackage[group-separator={,}]{siunitx}
-% \usepackage{tabularx} % currently not used
-% \usepackage{udline} % currently not used
+\usepackage{tablefootnote}
+\usepackage{tocloft} % to remove paragraph indentation in table of contents
 
 % for \arrayrulecolor command
 % To know the colors defined, see: [All you need to know about colors in LaTeX](https://latex-tutorial.com/color-latex/)
 \usepackage[table,x11names]{xcolor}
 
-\usepackage{tocloft} % to remove paragraph indentation in table of contents
+\usepackage{ulem} % for \uline etc.
+\usepackage{upgreek} % for upright Greek letters in math mode (\upalpha, \upbeta, \upgamma, ...)
 \usepackage{xspace} % [Space after LaTeX commands](https://tex.stackexchange.com/questions/31091/space-after-latex-commands)
 \usepackage{xurl}
-% \usepackage{zref-xr} % currently not used
+%\usepackage{zref-xr} % currently not used
+
+% cross reference
+% \zxrsetup{toltxlabel} % use normal LaTeX style \ref
+% \zexternaldocument*[1:]{reference/Mathematics_Memorandum_v0.23.0} % usage: \zexternaldocument*[prefix]{path/to/aux/file/without/extension}[path/to/pdf/file] Only ascii name is allowed.
 
 % ---------- structure settings ----------
 \makeatletter
@@ -94,15 +93,13 @@
 \renewcommand{\chapter}{\@ifstar\uncountedChapter\countedChapter}
 \makeatother
 
-% Reset equation and figure numbers at the beginning of each section. The number is displayed as "part.chapter.section.section-internal serial number".
+% Resets equation, figure and table numbers at the beginning of each section. The number is displayed as "part.chapter.section.section-internal serial number".
 \counterwithin{equation}{section}
 \counterwithin{figure}{section}
-
-% Use arabic numbers for footnotes even in minipage (including shadebox).
-\renewcommand*\thempfootnote{\arabic{mpfootnote}}
+\counterwithin{table}{section}
 
 % longtable settings
-\setcounter{LTchunksize}{200}
+% \setcounter{LTchunksize}{200} % currently not used
 
 % cleveref settings
 % see: [LaTeXの相互参照を賢くする (cleveref)](https://qiita.com/Hdan/items/8c59a7e0a3215ae32d74)
@@ -122,6 +119,9 @@
 % --------------------
 
 % ---------- style settings ----------
+% Use arabic numbers for footnotes even in minipage (including shadebox).
+\renewcommand*\thempfootnote{\arabic{mpfootnote}}
+
 % header and footer settings
 \fancyhead{\nouppercase{\rightmark}} % No upper case in header. This MUST be place before \pagestyle.
 \fancyhead{\nouppercase{\leftmark}}
@@ -180,17 +180,23 @@
 
 % listings settings
 \lstset{
-	basicstyle=\ttfamily,
-	identifierstyle=\small,
-	commentstyle=\smallitshape,
-	keywordstyle=\small\bfseries,
-	ndkeywordstyle=\small,
-	stringstyle=\small\ttfamily,
-	frame=lines,
-	breaklines=true,
-	columns=[l]{fullflexible},
-	numbers=left,
-	stepnumber=1,
+    basicstyle=\ttfamily,
+    identifierstyle=\small,
+    commentstyle=\smallitshape,
+    keywordstyle=\small\bfseries,
+    ndkeywordstyle=\small,
+    stringstyle=\small\ttfamily,
+    frame=lines,
+    breaklines=true,
+    columns=[l]{fullflexible},
+    numbers=left,
+    stepnumber=1,
+    numbersep=1em,
+    lineskip=-0.5ex
+}
+
+\sisetup{
+    group-minimum-digits=4 % use group separator for numbers with 4 or more digits
 }
 % --------------------
 
