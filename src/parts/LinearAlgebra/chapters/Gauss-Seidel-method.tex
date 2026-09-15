@@ -2,19 +2,19 @@
     \section{定義}
         以下に述べる定義はWikipediaの英語記事\href{https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method}{Gauss Seidel method}からの引用である。
         \par
-        $n\in\naturalNumbers,\;A\in\complexNumbers^{n\times n},\;\bm{b}\in\complexNumbers^n$ とする。$A$ は正定値対称、または狭義優対角であるとする。Gauss-Seidel法とは、線型方程式 $A\bm{x}=\bm{b}$ の解を求める反復法である。$\bm{x}_1\in\complexNumbers^n$ を任意の初期解とし、次の漸化式で解候補を更新してゆく。
+        $n\in\naturalNumbers,\;A\in\complexNumbers^{n\times n},\;\bm{b}\in\complexNumbers^n$ とする。$A$ は正定値対称、または狭義優対角であるとする。Gauss-Seidel法とは，線型方程式 $A\bm{x}=\bm{b}$ の解を求める反復法である。$\bm{x}_1\in\complexNumbers^n$ を任意の初期解とし，次の漸化式で解候補を更新してゆく。
         \[ L_* \bm{x}_{k+1} = -U\bm{x}_k \quad (k=1,2,\dots)\]
-        ここに $L_*$ は $A$ の対角成分およびその下側の要素からなる下三角行列であり、 $U$ は $A$ の対角成分の上側の要素からなる上三角行列である。
+        ここに $L_*$ は $A$ の対角成分およびその下側の要素からなる下三角行列であり， $U$ は $A$ の対角成分の上側の要素からなる上三角行列である。
     \section{係数行列が狭義優対角ならば厳密解に収束すること}
         \begin{proof}
             \quad\par
             $A$ の次数を $n$ とする。$\mathring{\bm{x}}$ を厳密解とすると $L_* \mathring{\bm{x}} = \bm{b} - U\mathring{\bm{x}}$ である。
             これを解の更新式から減じると次式を得る。
             \[ L_* (\bm{x}_{k+1} - \mathring{\bm{x}}) = -U(\bm{x}_k - \mathring{\bm{x}}) \tag{1} \]
-            $\bm{v}_k \coloneq \bm{x}_k - \mathring{\bm{x}}$ とおくと、式 (1) より次式が成り立つ。
+            $\bm{v}_k \coloneq \bm{x}_k - \mathring{\bm{x}}$ とおくと，式 (1) より次式が成り立つ。
             \[ L_* \bm{v}_{k+1} = -U\bm{v}_k \tag{2} \]
             $M_k \coloneq \max_{i=1,\dots,n} \abs{v_{k,i}}\;(v_{k,i}$ は $\bm{v}_k$ の第 $i$ 要素)とする。
-            次の2つが同時に成り立つことが、$\bm{v}_k$ が $\bm{0}_n$ に収束するための十分条件である。
+            次の2つが同時に成り立つことが，$\bm{v}_k$ が $\bm{0}_n$ に収束するための十分条件である。
             \begin{enumerate}
                 \item ある $k \in \naturalNumbers$ に対して $M_k = 0$ ならば $M_l = 0\;(l=k+1,k+2,\dots)$
                 \item 適当な $0 < \alpha < 1$ が存在して $M_k > 0 \Rightarrow M_{k+1} < \alpha M_k$
