@@ -1,6 +1,6 @@
 # Numerical Calculation Memorandum
 
-My note for numerical calculation.
+This is my note for numerical calculation.
 I hope this helps some students and engineers.
 
 ## 1. Definitions
