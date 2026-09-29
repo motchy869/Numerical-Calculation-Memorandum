@@ -5,7 +5,6 @@
             "name": "lualatex",
             "command": "lualatex",
             "args": [
-                "--cmdx",
                 "-file-line-error",
                 "-synctex=1",
                 "-interaction=nonstopmode",
@@ -28,7 +27,6 @@
         "bracks",
         "braket",
         "bytefield",
-        "cmdx",
         "counterwithin",
         "datatool",
         "dottedtocline",
